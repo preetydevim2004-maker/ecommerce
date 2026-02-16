@@ -3,6 +3,6 @@
 <div>
     <h3>{{product.name}}</h3>
     <p>PRICE: ${{ product.price }}</p>
-    <a href="#">VIEW</a>
+    <a href="{% url 'product_detail' product.id %}">VIEW</a>
 </div>
 {% endfor %}
