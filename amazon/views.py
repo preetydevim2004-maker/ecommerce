@@ -103,25 +103,31 @@ def user_logout(request):
     return redirect('login')
 @login_required
 def checkout(request):
-    cart=request.session.get('cart',{})
-    if request.method =="POST":
+    cart = request.session.get('cart', {})
+    if request.method == "POST":
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            order=Order.objects.create(user=request.user,total_amount=0)
+            total = 0   # ✅ initialize total
+
+            order = Order.objects.create(user=request.user, total_amount=0)
+
             for id in cart:
                 product = Product.objects.get(id=id)
-                quantity=cart[id]
-                total+=product.price*quantity
+                quantity = cart[id]
+                total += product.price * quantity
+
                 OrderItem.objects.create(
                     order=order,
                     product=product,
                     quantity=quantity
                 )
-                order.total_amount=total
-                order.save()
-                request.session['cart']={}
-                return redirect('product_list')
+
+            order.total_amount = total
+            order.save()
+
+            request.session['cart'] = {}
+            return redirect('product_list')
     else:
         form = CheckoutForm()
-    return render(request,'checkout.html',{'form':form})
-    
+
+    return render(request, 'checkout.html', {'form': form})

@@ -6,4 +6,10 @@ class RegisterForm(UserCreationForm):
     email=forms.EmailField()
     class Meta:
         model=User
-        field=['username','email','password1','password2']
+        fields=['username','email','password1','password2']
+class CheckoutForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields=['total_amount']
+
+        
