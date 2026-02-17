@@ -6,7 +6,7 @@ body {
 }
 
 /* Card (product box) */
-div {
+ .products{
     background: rgb(243, 237, 237);
     width: 220px;
     height: 320px;
@@ -21,14 +21,13 @@ div {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover effect */
-div:hover {
+.products:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
 /* Product image */
-div img {
+.products img {
     width: 100%;
     height: 160px;
     object-fit: contain;
@@ -36,21 +35,21 @@ div img {
 }
 
 /* Product name */
-div b, 
-div h3 {
+.products b, 
+.products h3 {
     display: block;
     margin: 8px 0;
     font-size: 18px;
 }
 
 /* Price text */
-div p {
+.products p {
     margin: 6px 0 12px;
     font-weight: bold;
 }
 
 /* VIEW button */
-div a {
+.products a {
     display: inline-block;
     padding: 8px 14px;
     background: #4b3cc9;
@@ -61,6 +60,143 @@ div a {
     transition: background 0.2s ease;
 }
 
-div a:hover {
+.products a:hover {
     background: #372bb0;
 }
+
+
+.product-detail {
+    width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.product-detail img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    margin: 20px 0;
+}
+
+.product-detail h2 {
+    margin-bottom: 15px;
+}
+
+.product-detail p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.product-detail a {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #4b3cc9;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.product-detail a:hover {
+    background: #372bb0;
+}
+
+
+/* ===== CART PAGE ===== */
+
+/* Cart card */
+.cart-box {
+    background: rgb(243, 237, 237);
+    width: 260px;
+    min-height: 360px;
+    padding: 16px;
+    margin: 14px;
+    border-radius: 12px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    box-sizing: border-box;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* product image */
+.cart-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+/* product name */
+.cart-box h3 {
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+/* price + quantity text */
+.cart-box p {
+    margin: 6px 0;
+    font-weight: bold;
+}
+
+/* buttons (+ - remove) */
+.cart-box a {
+    display: inline-block;
+    margin: 6px 4px;
+    padding: 6px 12px;
+    background: #4b3cc9;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.cart-box a:hover {
+    background: #372bb0;
+}
+
+/* total amount */
+.total {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: #222;
+}
+
+/* empty cart text */
+.empty {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+    color: #444;
+}
+
+/* continue shopping button */
+.continue {
+    display: block;
+    width: fit-content;
+    margin: 25px auto;
+    padding: 10px 18px;
+    background: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.continue:hover {
+    background: darkgreen;
+}
+

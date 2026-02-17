@@ -1,35 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CART</title>
-    <link rel="stylesheet" href="{% static 'hello.css' %}?v=2">
-</head>
-<body>
-   
-    {% block content %}
-    <h1>CART</h1>
 
-    {% if cart_items %}
-        {% for item in cart_items %}
-            <div>
-                <h3>{{ item.product.name }}</h3>
-                <p>Price: {{ item.product.price }}</p>
-                <p>Quantity: {{ item.quantity }}</p>
-                <p>Total: {{ item.total }}</p>
-                <a href="{% url 'increase' item.product.id %}">+</a>
-                <a href="{% url 'decrease' item.product.id %}">-</a>
-                <a href="{% url 'remove' item.product.id %}">Remove</a>
-            </div>
-        {% endfor %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'amazon/style.css' %}">
 
-        <h2>TOTAL : {{ final_amount }}</h2>
-    {% else %}
-        <p>Cart is empty!</p>
-    {% endif %}
+<center><h1>CART</h1></center>
 
-    <a href="{% url 'product_list' %}">Continue Shopping</a>
-    {% endblock %}
-</body>
-</html>
+{% if cart_items %}
+
+    {% for item in cart_items %}
+    <div class="cart-box">
+
+        <img src="{{ item.product.image.url }}" width="200">
+
+        <h3>{{ item.product.name }}</h3>
+        <p>Price: ${{ item.product.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Total: ${{ item.total }}</p>
+
+        <a href="{% url 'increase' item.product.id %}">+</a>
+        <a href="{% url 'decrease' item.product.id %}">-</a>
+        <a href="{% url 'remove' item.product.id %}">Remove</a>
+
+    </div>
+    {% endfor %}
+
+    <h2 class="total">Total : ${{ final_amount }}</h2>
+
+{% else %}
+    <p class="empty">Cart is empty!</p>
+{% endif %}
+
+<a class="continue" href="{% url 'product_list' %}">
+    Continue Shopping
+</a>
+{% endblock %}
