@@ -9,6 +9,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response 
 from .serializers import ProductSerializer
 
+@api_view(['GET'])
+def product_api(request):
+    products = Product.objects.all()
+    serializer =ProductSerializer(products,many=True)
+    return Response(serializer.data)
+
+
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'store/product_list.html', {'products': products})
@@ -129,8 +136,26 @@ def checkout(request):
             order.save()
 
             request.session['cart'] = {}
-            return redirect('product_list')
+            return redirect('order_success',id=order.id)
     else:
         form = CheckoutForm()
 
-    return render(request, 'checkout.html', {'form': form})
+    return render(request, 'store/checkout.html', {'form': form})
+
+@login_required
+def order_success(request,id):
+    order=Order.objects.get(id=id,user=request.user)
+    return render(request,'store/order_success.html',{'order':order})
+
+
+def order_detail(request, id):
+    order =Order.objects.get(id=id,user=request.user)
+    return render(request,'store/order.html',{'order':order})
+def product_list(request):
+    query=request.GET.get('q')
+    if query:
+        products=Product.objects.filter(name__icontains=query)
+    else:
+        products=Product.objects.all()
+
+    return render(request,'store/product_list.html',{'products':products})

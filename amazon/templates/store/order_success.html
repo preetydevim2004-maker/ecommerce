@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PLACE ORDER</title>
+</head>
+<body>
+<center>
+    <div>
+        <h1>Order Placed Successfully!</h1>
+        <p><strong>Order ID :</strong> {{ order.id }}</p>
+        <p><strong>Status :</strong> {{ order.status }}</p>
+        <p><strong>Payment Status :</strong> {{ order.payment }}</p>
+        <p>Thank you for shopping with amazon!</p>
+        <a href="{% url 'product_list' %}">Continue shopping...</a>
+    </div>
+</center>
+</body>
+</html>

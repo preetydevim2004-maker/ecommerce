@@ -9,7 +9,7 @@
 {% if cart_items %}
 
     {% for item in cart_items %}
-    <div class="cart-box">
+    <center><div class="cart-box">
 
         <img src="{{ item.product.image.url }}" width="200">
 
@@ -31,7 +31,8 @@
     <p class="empty">Cart is empty!</p>
 {% endif %}
 
-<a class="continue" href="{% url 'product_list' %}">
-    Continue Shopping
-</a>
+<!-- <a href="{% url 'checkout' %}">PLACE ORDER</a> -->
+<a href="{% url 'checkout' %}" class="btn">Proceed to Checkout</a>
+
+</center>
 {% endblock %}

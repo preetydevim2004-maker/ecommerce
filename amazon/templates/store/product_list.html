@@ -5,6 +5,12 @@
 <link rel="stylesheet" href="{% static 'amazon/style.css' %}">
 
 <center><h1>Amazon</h1></center>
+<center>
+    <form method="get">
+        <input type="text",name="q" placeholder="search for products & more ..." id="">
+        <button type="submit">SEARCH</button>
+    </form>
+</center>
 
 {% for product in products %}
     <div class="products">
@@ -15,3 +21,4 @@
     </div>
 {% endfor %}
 {% endblock %}
+
