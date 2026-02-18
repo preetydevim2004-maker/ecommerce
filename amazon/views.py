@@ -5,6 +5,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product ,Order, OrderItem
 from .forms import RegisterForm, CheckoutForm
+from rest_framework.decorators import api_view
+from rest_framework.response import Response 
+from .serializers import ProductSerializer
 
 def product_list(request):
     products = Product.objects.all()
@@ -107,7 +110,7 @@ def checkout(request):
     if request.method == "POST":
         form = CheckoutForm(request.POST)
         if form.is_valid():
-            total = 0   # ✅ initialize total
+            total = 0  
 
             order = Order.objects.create(user=request.user, total_amount=0)
 
